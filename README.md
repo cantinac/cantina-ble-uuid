@@ -97,7 +97,7 @@ uint8_t hex array (reversed):
 
 ## Using the UUID utility
 
-This tool is a wrapper around the [UUID NPM package](https://registry.npmjs.org/uuid), meant to make it easy to get what we need when working with BLE services and characteristics.
+This tool is a wrapper around the [UUID NPM package](https://www.npmjs.com/package/uuid), meant to make it easy to get what we need when working with BLE services and characteristics.
 
 You also use the CLI tool from the UUID package this relies on directly with:
 
