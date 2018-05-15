@@ -10,6 +10,8 @@
   "author": "George White <georg@cantina.co>",
   "license": "MIT",
   "dependencies": {
-    "uuid": "^3.1.0"
+    "ramda": "^0.25.0",
+    "uuid": "^3.1.0",
+    "yargs": "^11.0.0"
   }
 }

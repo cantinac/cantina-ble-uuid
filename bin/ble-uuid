@@ -1,4 +1,35 @@
 #!/usr/bin/env node
 
-const ble_uuid = require('../index.js')
-ble_uuid()
+const {
+  generate_ble_uuid,
+  generate_characteristic_ids,
+  output_ble_uuid,
+  output_characteristics }
+= require('../index.js')
+const { is } = require('ramda')
+
+const argv = require('yargs')
+  .usage('$0 [characteristics]')
+  .command(
+    ['$0 [characteristics..]', 'generate'],
+    'generate a 128 bit UUID, with optional characteristic UUIDs',
+    (yargs) => {
+      yargs.positional(
+        'characteristics',
+        {
+          describe: 'a list of characteristic names to assign to UUIDS',
+          type : 'array',
+          default: '[]',
+        }
+      )
+    },
+    (argv) => {
+      const uuid = generate_ble_uuid()
+      output_ble_uuid(uuid)
+      if ( is(Array, argv.characteristics) ) {
+        output_characteristics(generate_characteristic_ids(uuid, argv.characteristics))
+      }
+    }
+  )
+  .help()
+  .argv 
