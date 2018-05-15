@@ -24,12 +24,6 @@ It's pretty simple:
 bin/ble-uuid
 ```
 
-Or, if you like taking the scenic node path:
-
-```sh
-npm run-script uuid
-```
-
 You'll get an output that looks like this:
 
 ```sh
