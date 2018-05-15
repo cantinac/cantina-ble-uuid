@@ -1,13 +1,13 @@
 const uuidv4 = require('uuid/v4');
-const { take, map, addIndex, forEach } = require('ramda')
+const { take, map, addIndex, forEach, reverse } = require('ramda')
 
 const toHexArray = buffer => map(d => '0x' + d.toString(16).toUpperCase(), buffer)
 
 const representArray = buffer => {
   return `array:\n[${buffer}]\n`
-  + `array (reversed):\n[${buffer.reverse()}]\n`
+  + `array (reversed):\n[${reverse(buffer)}]\n`
   + `uint8_t hex array:\n{${buffer}}\n`
-  + `uint8_t hex array (reversed):\n{${buffer.reverse()}}\n`
+  + `uint8_t hex array (reversed):\n{${reverse(buffer)}}\n`
 }
 
 const generate_ble_uuid = () => {
@@ -20,7 +20,7 @@ const generate_characteristic_ids = (uuidBuffer, characteristics = []) => {
   // strip the last 4 bytes of the serviceId
   const initial = take(12, uuidBuffer)
   const mapIndexed = addIndex(map)
-  return mapIndexed( (c, i) => ({ name: c, uuid: [...initial, 0, 0, 0, i] }), characteristics)
+  return mapIndexed( (c, i) => ({ name: c, uuid: [...initial, 0, 0, 0, i + 1] }), characteristics)
 }
 
 // Isolate out side effects
@@ -36,7 +36,7 @@ const output_ble_uuid = buffer => {
 const output_characteristics = characteristics => {
   console.log('--------------------------')
   forEach(
-    c => console.log(`Characteristic name: ${c.name}\n\n${representArray(c.uuid)}`),
+    c => console.log(`Characteristic name: ${c.name}\n\n${representArray(toHexArray(c.uuid))}`),
     characteristics
   )
 }
