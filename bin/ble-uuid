@@ -1,0 +1,4 @@
+#!/usr/bin/env node
+
+const ble_uuid = require('../index.js')
+ble_uuid()

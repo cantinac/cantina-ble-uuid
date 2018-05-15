@@ -21,6 +21,12 @@ npm install
 It's pretty simple:
 
 ```sh
+bin/ble-uuid
+```
+
+Or, if you like taking the scenic node path:
+
+```sh
 npm run-script uuid
 ```
 
