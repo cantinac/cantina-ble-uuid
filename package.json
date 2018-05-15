@@ -1,0 +1,15 @@
+{
+  "name": "cantina-uuid",
+  "version": "1.0.0",
+  "description": "Make new UUIDs for services quickly",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "uuid": "node index.js"
+  },
+  "author": "George White <georg@cantina.co>",
+  "license": "MIT",
+  "dependencies": {
+    "uuid": "^3.1.0"
+  }
+}
