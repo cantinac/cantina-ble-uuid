@@ -108,3 +108,9 @@ npx uuid
 This tools has many more options for generating UUIDs, so it might be worth looking at beyond the domain-specific use we are making.
 
 If you want to see the options for that command, run `npx uuid --help`.
+
+## Quick note: yargs, ramda
+
+The binary for this utility is made using the core module plus the very handy [yargs](http://yargs.js.org/).
+
+And we stay pure and functional with [ramda](https://ramdajs.com). I had a bug in an earlier version thanks to in-place mutation of the buffer array — never again with ramda!
